@@ -1,0 +1,16 @@
+<polymer-element name='cast-error-control'>
+  <template>
+      <template if='{{error}}'>
+      <p>{{error.code}}</p>
+      <p>{{error.description}}</p>
+      <p>{{error.details}}</p>
+    </template>
+  </template>
+  <script>
+    Polymer({
+      ready : function() {
+        console.log('error control ready');
+      }
+    });
+  </script>
+</polymer-element>

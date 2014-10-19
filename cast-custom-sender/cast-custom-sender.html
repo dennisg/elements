@@ -1,26 +1,22 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="cast-session-control.html">
 <link rel="import" href="cast-media-control.html">
+<link rel="import" href="cast-error-control.html">
 
 <polymer-element name='cast-custom-sender' attributes='applicationId mediaURL'>
   <style src='styles.css'></style>
   <template>
-    <p>sender for: {{applicationId}}</p>
+    <p>Sender App for: {{applicationId}}</p>
 
-    <button on-click='{{launch}}'>launch!</button>
+    <button on-click='{{launch}}'>Launch!</button>
 
     <template if='{{session}}'>
       <button on-click='{{stop}}'>stop</button>
     </template>
 
-    <template if='{{initialized}}'>INITIALIZED</template>
-    <template if='{{error}}'>
-      <p>{{error.code}}</p>
-      <p>{{error.description}}</p>
-      <p>{{error.details}}</p>
-    </template>
     <cast-session-control session='{{session}}'></cast-session-control>
     <cast-media-control media='{{media}}'></cast-media-control>
+    <cast-error-control error='{{error}}'></cast-error-control>
 
   </template>
 
