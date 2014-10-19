@@ -1,0 +1,30 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="cast-session-control.html">
+
+<polymer-element name='cast-custom-sender' attributes='applicationId mediaURL'>
+  <style src='styles.css'></style>
+  <template>
+    <p>sender for: {{applicationId}}</p>
+
+    <button on-click='{{launch}}'>launch!</button>
+
+    <template if='{{session}}'>
+      <button on-click='{{stop}}'>stop</button>
+    </template>
+
+    <template if='{{initialized}}'>INITIALIZED</template>
+    <template if='{{error}}'>
+      <p>{{error.code}}</p>
+      <p>{{error.description}}</p>
+      <p>{{error.details}}</p>
+    </template>
+    <cast-session-control session='{{session}}'></cast-session-control>
+    <template if='{{media}}'>
+        MEDIA: {{media.playerState}} @ {{media.currentTime}}
+    </template>
+
+  </template>
+
+  <script type="text/javascript" src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"></script>
+  <script type="text/javascript" src="script.js"></script>
+</polymer-element

@@ -1,0 +1,34 @@
+       body {
+            overflow:hidden;
+        }
+        video {
+            height:auto;
+            width:100%;
+            text-align: center;
+            border:0px solid silver;
+            display: table-cell;
+            vertical-align: middle;
+            color: #FFFFFF;
+            background-color: #000000;
+            font-weight: bold;
+            font-family: Verdana, Geneva, sans-serif;
+            font-size:40px;
+            float:left;
+            z-index: 1;
+            position:absolute;
+        }
+        #messages {
+            color: #FFFFFF;
+            float: left;
+            margin-left: 25px;
+            margin-top:  25px;
+            z-index: 2;
+            position:absolute;
+            font-weight: bold;
+            width:1000PX;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        #messages span {
+            font-weight: normal;
+        }

@@ -1,0 +1,29 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<polymer-element name='cast-session-control' attributes='session'>
+  <style>
+    ::host {
+        display: block;
+        width: 300px;
+        height: auto;
+        background-color: efefef;
+    }
+  </style>
+  <template>
+
+    <template if='{{session}}'>
+      <p>id: {{session.sessionId}}</p>
+      <p>{{session.displayName}} @ {{session.receiver.friendlyName}}</p>
+      <p>{{session.statusText}}</p>
+    </template>
+
+  </template>
+  <script>Polymer({
+    ready : function() {
+      console.log('session control ready');
+    },
+    sessionChanged : function(oldSession, newSession) {
+        console.log('new session', newSession);
+    }
+  })</script>
+</polymer-element>
