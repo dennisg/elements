@@ -1,5 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="cast-session-control.html">
+<link rel="import" href="cast-media-control.html">
 
 <polymer-element name='cast-custom-sender' attributes='applicationId mediaURL'>
   <style src='styles.css'></style>
@@ -19,9 +20,7 @@
       <p>{{error.details}}</p>
     </template>
     <cast-session-control session='{{session}}'></cast-session-control>
-    <template if='{{media}}'>
-        MEDIA: {{media.playerState}} @ {{media.currentTime}}
-    </template>
+    <cast-media-control media='{{media}}'></cast-media-control>
 
   </template>
 

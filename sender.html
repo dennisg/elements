@@ -11,12 +11,30 @@
   <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
   <style src='styles.css'></style>
 
+  <link rel="import" href="bower_components/core-ajax/core-ajax.html">
+  <link rel="import" href="bower_components/core-list/core-list.html">
   <link rel="import" href="cast-custom-sender/cast-custom-sender.html">
 </head>
 
 <body unresolved>
   <template is='auto-binding'>
-    <cast-custom-sender mediaURL='http://mirrorblender.top-ix.org/movies/sintel-1280-surround.mp4'></cast-custom-sender>
+    <core-ajax auto response='{{response}}' url='list.json' handleAs='json'></core-ajax>
+
+    <cast-custom-sender mediaURL='{{selected.url}}'></cast-custom-sender>
+
+    <core-list data="{{response}}" selection='{{selected}}'>
+      <template>
+        <style>
+          .item {
+            background-color: green;
+          }
+        </style>
+        <div class="item">
+          List row: {{index}}, Title: {{model.title}}
+        </div>
+      </template>
+    </core-list>
+
   </template>
 </body>
 </html>

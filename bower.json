@@ -9,6 +9,8 @@
   "dependencies": {
     "polymer": "Polymer/polymer#master",
     "webcomponentsjs": "Polymer/webcomponentsjs#master",
-    "paper-elements": "Polymer/paper-elements#master"
+    "paper-elements": "Polymer/paper-elements#master",
+    "core-list": "Polymer/core-list#master",
+    "core-ajax": "Polymer/core-ajax#master"
   }
 }

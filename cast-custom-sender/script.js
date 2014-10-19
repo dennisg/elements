@@ -14,6 +14,19 @@ Polymer('cast-custom-sender', {
         chrome.cast.initialize(apiConfig, this.onInitSuccess.bind(this), this.onError.bind(this));
     },
 
+    mediaURLChanged : function(oldValue, newValue) {
+      console.log('new media url', newValue);
+      if (this.session) {
+        var mediaInfo = new chrome.cast.media.MediaInfo(this.mediaURL);
+        mediaInfo.contentType = 'video/mp4';
+        var request = new chrome.cast.media.LoadRequest(mediaInfo);
+        console.log('loadMedia: ' + this.mediaURL);
+        this.session.loadMedia(request, this.onMediaDiscovered.bind(this, 'loadMedia'), this.onMediaError.bind(this));
+      } else {
+        this.error = { code : 'no session' };
+      }
+    },
+
     sessionListener : function(e) {
       this.session = e;
       console.log(e);
@@ -64,11 +77,6 @@ Polymer('cast-custom-sender', {
 
     onRequestSessionSuccess : function(e) {
       this.session = e;
-      var mediaInfo = new chrome.cast.media.MediaInfo(this.mediaURL);
-      mediaInfo.contentType = 'video/mp4';
-      var request = new chrome.cast.media.LoadRequest(mediaInfo);
-      console.log('loadMedia: ' + this.mediaURL);
-      this.session.loadMedia(request, this.onMediaDiscovered.bind(this, 'loadMedia'), this.onMediaError.bind(this));
     },
 
     onLaunchError : function(e) {
@@ -84,11 +92,8 @@ Polymer('cast-custom-sender', {
     onMediaDiscovered : function(how, media) {
       console.log('media discovered: ' + how);
       this.media = media;
-      this.media.addUpdateListener(this.onMediaStatusUpdate.bind(this));
-    },
-
-    onMediaStatusUpdate : function(e) {
-      console.log('media status update', e)
+      //this.media.addUpdateListener(this.onMediaStatusUpdate.bind(this));
     }
+
 
 });

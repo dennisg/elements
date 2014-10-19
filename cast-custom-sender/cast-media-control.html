@@ -1,0 +1,48 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<polymer-element name='cast-media-control' attributes='media'>
+  <style>
+    ::host {
+        width: 300px;
+        height: auto;
+        background-color: efefef;
+    }
+  </style>
+  <template>
+
+    <template if='{{media}}'>
+      <p>Media loaded</p>
+      <p>MEDIA: {{media.playerState}} @ {{media.currentTime}}</p>
+      <button on-click='{{play}}'>Play</button>
+      <button on-click='{{pause}}'>Pause</button>
+    </template>
+
+
+    <template if='{{!media}}'>
+      <p>Media not loaded</p>
+    </template>
+
+  </template>
+  <script>Polymer({
+    ready : function() {
+      console.log('media control ready');
+    },
+    mediaChanged : function(oldMedia, newMedia) {
+        console.log('new media', newMedia);
+        newMedia.addUpdateListener(this.onMediaStatusUpdate.bind(this));
+    },
+
+    play : function() {
+        this.media.play();
+    },
+
+    pause : function() {
+        this.media.pause();
+    },
+
+    onMediaStatusUpdate : function(e) {
+      console.log('media status update', e)
+    }
+
+  })</script>
+</polymer-element>
