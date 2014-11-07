@@ -1,4 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../cast-custom-common/cast-custom-common.html">
 <link rel="import" href="cast-session-control.html">
 <link rel="import" href="cast-media-control.html">
 <link rel="import" href="cast-error-control.html">
@@ -14,9 +15,15 @@
       <button on-click='{{stop}}'>stop</button>
     </template>
 
-    <cast-session-control session='{{session}}'></cast-session-control>
-    <cast-media-control media='{{media}}'></cast-media-control>
-    <cast-error-control error='{{error}}'></cast-error-control>
+    <cast-session-control session='{{session}}'>
+      <content select="#session"></content>
+    </cast-session-control>
+    <cast-media-control media='{{media}}'>
+      <content select="#media"></content>
+    </cast-media-control>
+    <cast-error-control error='{{error}}'>
+      <content select="error"></content>
+    </cast-error-control>
 
   </template>
 

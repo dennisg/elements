@@ -3,9 +3,14 @@ body {
   border: 0;
   margin: 0;
 }
-cast-cusom-receiver {
+cast-custom-receiver {
 
   width: 80%;
   height: 600px;
+  margin-top: 30px;
 }
 
+core-toolbar {
+  background-color: green;
+  color: white;
+}

@@ -20,6 +20,7 @@ Polymer('cast-custom-receiver', {
         mediaProtocol : null,
         mediaPlayer : null,
         connectedCastSenders : [], // {senderId:'', channel:obj}
+        channelName : 'urn:x-cast:com.google.devrel.custom',
 
         ready :   function() {
             console.log('ready');
@@ -166,7 +167,7 @@ Polymer('cast-custom-receiver', {
          * You can check the cast.receiver.CastMessageBus.MessageType that a message bus processes though a call
          * to getMessageType. As well, you get the namespace of a message bus by calling getNamespace()
          */
-        this.messageBus = this.castReceiverManager.getCastMessageBus('urn:x-cast:com.google.devrel.custom');
+        this.messageBus = this.castReceiverManager.getCastMessageBus(this.channelName);
         /**
          * The namespace urn:x-cast:com.google.devrel.custom is used to identify the protocol of showing/hiding
          * the heads up display messages (The messages defined at the beginning of the html).

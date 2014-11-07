@@ -13,14 +13,42 @@
 
   <link rel="import" href="bower_components/core-ajax/core-ajax.html">
   <link rel="import" href="bower_components/core-list/core-list.html">
+  <link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
+  <link rel="import" href="bower_components/core-icon/core-icon.html">
+  <link rel="import" href="bower_components/core-icons/core-icons.html">
+  <link rel="import" href="bower_components/core-progress/core-progress.html">
   <link rel="import" href="cast-custom-sender/cast-custom-sender.html">
 </head>
 
 <body unresolved>
+
+  <core-toolbar fit>
+    <core-icon class='menu'></core-icon>
+    <div>Cast Sender</div><span flex></span>
+    <core-icon class='search'></core-icon>
+    <core-progress progress='80' bottom></core-progress>
+  </core-toolbar>
+
+
   <template is='auto-binding'>
     <core-ajax auto response='{{response}}' url='list.json' handleAs='json'></core-ajax>
 
-    <cast-custom-sender mediaURL='{{selected.url}}'></cast-custom-sender>
+    <cast-custom-sender mediaURL='{{selected.url}}'>
+      <div id='session'>
+        <template if='{{session}}'>
+          <p>ID: {{session.sessionId}}</p>
+          <p>{{session.displayName}} @ {{session.receiver.friendlyName}}</p>
+        </template>
+      </div>
+      <div id='error'>
+        Errors
+        <template if='{{error}}'>
+          <p>Error: {{error.code}}</p>
+          <p>{{error.description}}</p>
+          <p>{{error.details}}</p>
+      </template>
+      </div>
+    </cast-custom-sender>
 
     <core-list data="{{response}}" selection='{{selected}}'>
       <template>
